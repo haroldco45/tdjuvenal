@@ -9,15 +9,21 @@
         :root {
             --alex-cyan: #00aeef;
             --alex-magenta: #ec008c;
-            --primary-blue: #004a99;
+            --alex-yellow: #fff200;
             --card-bg: #ffffff;
-            --bg-light: #f3f4f6;
             --text-dark: #1f2937;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #111;
+            font-family: 'Segoe UI', sans-serif;
+            /* FONDO DE PUBLICISTA: Degradado CMYK con malla de diseño */
+            background-color: #f0f2f5;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(0, 174, 239, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(236, 0, 140, 0.05) 0%, transparent 40%),
+                linear-gradient(#e5e7eb 1px, transparent 1px), 
+                linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -31,83 +37,104 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            /* Borde publicitario lateral */
+            border-top: 10px solid var(--alex-cyan);
+            overflow: hidden;
         }
 
-        /* SISTEMA DE BLOQUEO */
-        #lock-screen {
-            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(31, 41, 55, 0.98); z-index: 9999;
-            flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; padding: 30px; box-sizing: border-box;
-        }
-        .is-blocked #lock-screen { display: flex; }
-
-        /* HEADER LIMPIO */
-        .header-graphic {
-            height: 200px;
+        /* HEADER CREATIVO */
+        .header-canvas {
+            height: 240px;
             background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-bottom: 1px solid #eee;
             position: relative;
+            padding: 20px;
+            border-bottom: 2px dashed #ddd;
         }
 
         .profile-logo { 
-            width: 220px;
+            width: 280px;
             height: auto;
             object-fit: contain;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
             z-index: 2;
         }
 
-        .business-info { text-align: center; padding: 25px 20px 20px; }
-        /* Título eliminado para evitar redundancia con el logo */
-        .slogan { font-size: 14px; color: var(--alex-cyan); font-weight: 700; font-style: italic; margin-bottom: 15px; }
+        .business-info { text-align: center; padding: 25px 20px; }
+        .slogan { 
+            font-size: 16px; 
+            color: var(--alex-cyan); 
+            font-weight: 800; 
+            font-style: italic; 
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
         
-        .rep-info { border-top: 1px solid #eee; padding-top: 15px; }
-        .rep-info h2 { font-size: 22px; color: var(--text-dark); margin: 0; }
-        .rep-info span { font-size: 12px; color: #6b7280; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+        .rep-card { 
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 0 20px;
+            border-bottom: 4px solid var(--alex-magenta);
+        }
+        .rep-card h2 { font-size: 26px; color: #111; margin: 0; font-weight: 900; }
+        .rep-card span { font-size: 14px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
 
-        /* PORTAFOLIO */
+        /* BOTÓN PORTAFOLIO PRO */
         .portfolio-btn {
-            margin: 10px 20px 25px;
-            padding: 16px;
-            background: linear-gradient(45deg, var(--alex-cyan), var(--alex-magenta));
+            margin: 25px 20px;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--alex-cyan), var(--alex-magenta));
             border-radius: 12px;
             text-decoration: none;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            font-weight: 800;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(0,174,239,0.3);
+            gap: 12px;
+            font-weight: 900;
+            font-size: 15px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(0,174,239,0.3);
+            transition: 0.3s;
         }
 
-        /* ACCIONES */
+        /* ACCIONES MÁS GRANDES */
         .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 0 20px 30px; }
         .action-item { text-decoration: none; text-align: center; color: var(--text-dark); }
-        .icon-box { 
-            width: 60px; height: 60px; border-radius: 50%; background: #ffffff; color: var(--primary-blue);
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
-            font-size: 24px; border: 2px solid #eee;
+        .icon-circle { 
+            width: 70px; height: 70px; border-radius: 50%; background: #ffffff; color: var(--alex-cyan);
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;
+            font-size: 28px; border: 2px solid #e2e8f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         /* INFO LIST */
         .info-list { padding: 0 20px 30px; }
-        .info-row { 
-            display: flex; align-items: center; padding: 16px; background: #f9fafb;
-            border-radius: 12px; margin-bottom: 12px; text-decoration: none; color: var(--text-dark);
-            font-size: 14px; border: 1px solid #f1f5f9;
+        .info-box { 
+            display: flex; align-items: center; padding: 18px; background: #fff;
+            border-radius: 15px; margin-bottom: 12px; text-decoration: none; color: var(--text-dark);
+            font-size: 15px; border: 1px solid #f1f5f9;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
-        .info-row i { width: 35px; font-size: 20px; color: var(--alex-cyan); }
+        .info-box i { width: 40px; font-size: 22px; color: var(--alex-magenta); }
 
         .footer { 
-            padding: 25px; text-align: center; background: #f9fafb; color: #6b7280; font-size: 11px;
-            border-top: 1px solid #eee;
+            padding: 35px; text-align: center; background: #f8fafc; color: #94a3b8; font-size: 11px;
+            border-top: 1px solid #e2e8f0;
         }
+        
+        /* BLOQUEO */
+        #lock-screen {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.98); z-index: 9999;
+            flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 30px; box-sizing: border-box;
+        }
+        .is-blocked #lock-screen { display: flex; }
     </style>
 </head>
 <body>
@@ -115,61 +142,61 @@
 <div id="main-card" class="card-container">
     
     <div id="lock-screen">
-        <i class="fa-solid fa-hourglass-half" style="font-size: 50px; color: var(--alex-yellow); margin-bottom: 20px;"></i>
-        <h2>SERVICIO EN PAUSA</h2>
-        <p>Suscripción de prueba finalizada.</p>
+        <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 55px; color: var(--alex-yellow); margin-bottom: 20px;"></i>
+        <h2>CREATIVIDAD EN PAUSA</h2>
+        <p>Tu tarjeta digital requiere activación.</p>
         <a href="https://wa.me/573117700431?text=Hola%20Harold,%20reactiva%20mi%20tarjeta%20ALEXQUIN" 
-           style="background:var(--alex-cyan); color:white; padding:12px 25px; border-radius:25px; text-decoration:none; font-weight:900; margin-top:15px; display:inline-block;">
+           style="background:var(--alex-cyan); color:white; padding:15px 30px; border-radius:30px; text-decoration:none; font-weight:900; margin-top:20px; display:inline-block;">
            PAGAR PARA ACTIVAR
         </a>
     </div>
 
     <div class="content-to-hide">
-        <div class="header-graphic">
+        <div class="header-canvas">
             <img src="alexquin.PNG" alt="ALEXQUIN" class="profile-logo">
         </div>
 
         <div class="business-info">
             <div class="slogan">"Le imprimimos pasión a tus ideas"</div>
             
-            <div class="rep-info">
+            <div class="rep-card">
                 <h2>Juvenal González</h2>
                 <span>Asesor Comercial</span>
             </div>
         </div>
 
         <a href="portafolio_alexquin.pdf" target="_blank" class="portfolio-btn">
-            <i class="fa-solid fa-file-pdf"></i> VER PORTAFOLIO DE SERVICIOS
+            <i class="fa-solid fa-palette"></i> Ver Portafolio Creativo
         </a>
 
         <div class="action-grid">
             <a href="tel:3045639630" class="action-item">
-                <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
-                <span style="font-size: 10px; font-weight: 800;">LLAMAR</span>
+                <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
+                <span style="font-size: 11px; font-weight: 800;">LLAMAR</span>
             </a>
             <a href="https://wa.me/573045639630" class="action-item">
-                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
-                <span style="font-size: 10px; font-weight: 800;">WHATSAPP</span>
+                <div class="icon-circle" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i></div>
+                <span style="font-size: 11px; font-weight: 800;">WHATSAPP</span>
             </a>
             <a href="mailto:alexquinpublicidad@gmail.com" class="action-item">
-                <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
-                <span style="font-size: 10px; font-weight: 800;">CORREO</span>
+                <div class="icon-circle" style="color: var(--alex-magenta);"><i class="fa-solid fa-envelope"></i></div>
+                <span style="font-size: 11px; font-weight: 800;">CORREO</span>
             </a>
         </div>
 
         <nav class="info-list">
-            <div class="info-row">
-                <i class="fa-solid fa-map-location-dot"></i>
-                <div><b>Caucasia, Antioquia</b><br>Calle 20 No. 8-49</div>
+            <div class="info-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <div><b>Sede Caucasia</b><br>Calle 20 No. 8-49</div>
             </div>
-            <div class="info-row">
-                <i class="fa-solid fa-phone-volume"></i>
-                <div><b>Fijo Oficina</b><br>(604) 839 0069 Ext. 101</div>
+            <div class="info-box">
+                <i class="fa-solid fa-print"></i>
+                <div><b>Producción</b><br>(604) 839 0069 Ext. 101</div>
             </div>
         </nav>
 
         <footer class="footer">
-            TARJETA DIGITAL DESARROLLADA POR<br>
+            ESTRATEGIA DIGITAL DESARROLLADA POR<br>
             <b>VIBRAS POSITIVAS</b> © 2026<br>
             DERECHOS DE AUTOR (311 770 0431)
         </footer>
