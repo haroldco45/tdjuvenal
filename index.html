@@ -46,7 +46,7 @@
 
         /* HEADER DISEÑO CMYK */
         .header-graphic {
-            height: 180px;
+            height: 190px;
             background: #000;
             position: relative;
             overflow: hidden;
@@ -64,14 +64,15 @@
             clip-path: polygon(100% 0, 100% 100%, 60% 100%, 20% 0);
         }
 
+        /* LOGO INTEGRADO */
         .profile-logo { 
-            width: 250px;
+            width: 260px;
             z-index: 2;
             filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
             object-fit: contain;
         }
 
-        .business-info { text-align: center; padding: 30px 20px 20px; }
+        .business-info { text-align: center; padding: 25px 20px 20px; }
         .business-info h1 { font-size: 32px; color: #000; margin: 0; font-weight: 900; letter-spacing: -1px; }
         .slogan { font-size: 14px; color: var(--alex-cyan); font-weight: 700; font-style: italic; margin-top: 5px; }
         
@@ -140,7 +141,7 @@
     <div class="content-to-hide">
         <div class="header-graphic">
             <div class="cmyk-stripe"></div>
-            <img src="1001997141.png" alt="ALEXQUIN" class="profile-logo">
+            <img src="alexquin.PNG" alt="ALEXQUIN" class="profile-logo">
         </div>
 
         <div class="business-info">
@@ -197,7 +198,7 @@
 </div>
 
 <script>
-    // CONTROL DE FECHA PARA HAROLD (Año, Mes-1, Día)
+    // CONTROL DE FECHA (Año, Mes-1, Día)
     const FECHA_VENCIMIENTO = new Date(2027, 0, 1); 
 
     function verificarLicencia() {
