@@ -34,7 +34,7 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
-        /* BLOQUEO */
+        /* SISTEMA DE BLOQUEO */
         #lock-screen {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(26, 26, 26, 0.98); z-index: 9999;
@@ -65,11 +65,13 @@
         }
 
         .profile-logo { 
-            width: 220px; z-index: 2;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            width: 250px;
+            z-index: 2;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+            object-fit: contain;
         }
 
-        .business-info { text-align: center; padding: 40px 20px 20px; }
+        .business-info { text-align: center; padding: 30px 20px 20px; }
         .business-info h1 { font-size: 32px; color: #000; margin: 0; font-weight: 900; letter-spacing: -1px; }
         .slogan { font-size: 14px; color: var(--alex-cyan); font-weight: 700; font-style: italic; margin-top: 5px; }
         
@@ -77,13 +79,30 @@
         .contact-person h2 { font-size: 20px; color: var(--text-dark); margin: 0; }
         .job-title { font-size: 12px; color: #777; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
 
+        /* BOTÓN PORTAFOLIO PDF */
+        .portfolio-btn {
+            margin: 0 20px 20px;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--alex-cyan), var(--alex-magenta));
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0,174,239,0.3);
+        }
+
         /* ACCIONES */
-        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; }
+        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 0 20px 20px; }
         .action-item { text-decoration: none; text-align: center; color: var(--text-dark); }
         .icon-box { 
             width: 60px; height: 60px; border-radius: 18px; background: #000; color: #fff;
             display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
-            font-size: 24px; transition: 0.3s;
+            font-size: 24px;
         }
         .action-item:nth-child(1) .icon-box { background: var(--alex-cyan); }
         .action-item:nth-child(2) .icon-box { background: #25d366; }
@@ -102,7 +121,6 @@
             padding: 25px; text-align: center; background: #000; color: #fff; font-size: 11px;
             border-top: 4px solid var(--alex-yellow);
         }
-        .footer b { color: var(--alex-cyan); }
     </style>
 </head>
 <body>
@@ -110,19 +128,19 @@
 <div id="main-card" class="card-container">
     
     <div id="lock-screen">
-        <i class="fa-solid fa-hourglass-end lock-icon"></i>
-        <h2 style="color: var(--alex-yellow);">SISTEMA EN PAUSA</h2>
-        <p>Tu suscripción de 8 días ha finalizado.</p>
-        <a href="https://wa.me/573117700431?text=Hola%20Harold,%20mi%20tarjeta%20ALEXQUIN%20está%20bloqueada." 
+        <i class="fa-solid fa-hourglass-end" style="font-size: 50px; color: var(--alex-yellow); margin-bottom: 20px;"></i>
+        <h2 style="color: var(--alex-yellow);">SERVICIO EN PAUSA</h2>
+        <p>Tu suscripción de prueba ha finalizado.</p>
+        <a href="https://wa.me/573117700431?text=Hola%20Harold,%20necesito%20activar%20mi%20tarjeta%20ALEXQUIN" 
            style="background:var(--alex-cyan); color:white; padding:12px 25px; border-radius:25px; text-decoration:none; font-weight:900; margin-top:15px; display:inline-block;">
-           REACTIVAR SERVICIO
+           REACTIVAR AHORA
         </a>
     </div>
 
     <div class="content-to-hide">
         <div class="header-graphic">
             <div class="cmyk-stripe"></div>
-            <img src="logo_alexquin.png" alt="ALEXQUIN" class="profile-logo">
+            <img src="1001997141.png" alt="ALEXQUIN" class="profile-logo">
         </div>
 
         <div class="business-info">
@@ -135,6 +153,10 @@
                 <div class="job-title">Asesor Comercial</div>
             </div>
         </div>
+
+        <a href="portafolio_alexquin.pdf" target="_blank" class="portfolio-btn">
+            <i class="fa-solid fa-file-pdf"></i> Ver Portafolio de Servicios
+        </a>
 
         <div class="action-grid">
             <a href="tel:3045639630" class="action-item">
@@ -175,7 +197,7 @@
 </div>
 
 <script>
-    // CAMBIA LA FECHA PARA DESBLOQUEAR DESDE GITHUB (Año, Mes-1, Día)
+    // CONTROL DE FECHA PARA HAROLD (Año, Mes-1, Día)
     const FECHA_VENCIMIENTO = new Date(2027, 0, 1); 
 
     function verificarLicencia() {
