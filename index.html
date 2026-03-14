@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta Digital - ALEXQUIN Publicidad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --alex-cyan: #00aeef;
+            --alex-magenta: #ec008c;
+            --alex-yellow: #fff200;
+            --primary-bg: #1a1a1a;
+            --card-bg: #ffffff;
+            --text-dark: #333333;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--primary-bg);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 450px;
+            background: var(--card-bg);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+        }
+
+        /* BLOQUEO */
+        #lock-screen {
+            display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(26, 26, 26, 0.98); z-index: 9999;
+            flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: white; padding: 30px; box-sizing: border-box;
+        }
+        .is-blocked #lock-screen { display: flex; }
+        .is-blocked .content-to-hide { filter: blur(10px); pointer-events: none; }
+
+        /* HEADER DISEÑO CMYK */
+        .header-graphic {
+            height: 180px;
+            background: #000;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cmyk-stripe {
+            position: absolute;
+            top: 0; right: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(135deg, var(--alex-yellow) 25%, var(--alex-cyan) 25%, var(--alex-cyan) 50%, var(--alex-magenta) 50%, var(--alex-magenta) 75%, #000 75%);
+            opacity: 0.8;
+            clip-path: polygon(100% 0, 100% 100%, 60% 100%, 20% 0);
+        }
+
+        .profile-logo { 
+            width: 220px; z-index: 2;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+        }
+
+        .business-info { text-align: center; padding: 40px 20px 20px; }
+        .business-info h1 { font-size: 32px; color: #000; margin: 0; font-weight: 900; letter-spacing: -1px; }
+        .slogan { font-size: 14px; color: var(--alex-cyan); font-weight: 700; font-style: italic; margin-top: 5px; }
+        
+        .contact-person { margin-top: 15px; border-top: 2px solid #eee; padding-top: 15px; }
+        .contact-person h2 { font-size: 20px; color: var(--text-dark); margin: 0; }
+        .job-title { font-size: 12px; color: #777; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+
+        /* ACCIONES */
+        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 20px; }
+        .action-item { text-decoration: none; text-align: center; color: var(--text-dark); }
+        .icon-box { 
+            width: 60px; height: 60px; border-radius: 18px; background: #000; color: #fff;
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
+            font-size: 24px; transition: 0.3s;
+        }
+        .action-item:nth-child(1) .icon-box { background: var(--alex-cyan); }
+        .action-item:nth-child(2) .icon-box { background: #25d366; }
+        .action-item:nth-child(3) .icon-box { background: var(--alex-magenta); }
+
+        /* INFO LIST */
+        .info-list { padding: 0 20px 20px; }
+        .info-row { 
+            display: flex; align-items: center; padding: 15px; background: #f9f9f9;
+            border-radius: 12px; margin-bottom: 10px; text-decoration: none; color: var(--text-dark);
+            font-size: 14px; border: 1px solid #eee;
+        }
+        .info-row i { width: 35px; font-size: 18px; color: #000; }
+
+        .footer { 
+            padding: 25px; text-align: center; background: #000; color: #fff; font-size: 11px;
+            border-top: 4px solid var(--alex-yellow);
+        }
+        .footer b { color: var(--alex-cyan); }
+    </style>
+</head>
+<body>
+
+<div id="main-card" class="card-container">
+    
+    <div id="lock-screen">
+        <i class="fa-solid fa-hourglass-end lock-icon"></i>
+        <h2 style="color: var(--alex-yellow);">SISTEMA EN PAUSA</h2>
+        <p>Tu suscripción de 8 días ha finalizado.</p>
+        <a href="https://wa.me/573117700431?text=Hola%20Harold,%20mi%20tarjeta%20ALEXQUIN%20está%20bloqueada." 
+           style="background:var(--alex-cyan); color:white; padding:12px 25px; border-radius:25px; text-decoration:none; font-weight:900; margin-top:15px; display:inline-block;">
+           REACTIVAR SERVICIO
+        </a>
+    </div>
+
+    <div class="content-to-hide">
+        <div class="header-graphic">
+            <div class="cmyk-stripe"></div>
+            <img src="logo_alexquin.png" alt="ALEXQUIN" class="profile-logo">
+        </div>
+
+        <div class="business-info">
+            <h1>ALEXQUIN</h1>
+            <div class="job-title">Publicidad</div>
+            <div class="slogan">"Le imprimimos pasión a tus ideas"</div>
+            
+            <div class="contact-person">
+                <h2>Juvenal González</h2>
+                <div class="job-title">Asesor Comercial</div>
+            </div>
+        </div>
+
+        <div class="action-grid">
+            <a href="tel:3045639630" class="action-item">
+                <div class="icon-box"><i class="fa-solid fa-phone"></i></div>
+                <span style="font-size: 11px; font-weight: 700;">Llamar</span>
+            </a>
+            <a href="https://wa.me/573045639630" class="action-item">
+                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <span style="font-size: 11px; font-weight: 700;">WhatsApp</span>
+            </a>
+            <a href="mailto:alexquinpublicidad@gmail.com" class="action-item">
+                <div class="icon-box"><i class="fa-solid fa-envelope"></i></div>
+                <span style="font-size: 11px; font-weight: 700;">Correo</span>
+            </a>
+        </div>
+
+        <nav class="info-list">
+            <div class="info-row">
+                <i class="fa-solid fa-location-dot"></i>
+                <div><b>Caucasia, Antioquia</b><br>Calle 20 No. 8-49</div>
+            </div>
+            <div class="info-row">
+                <i class="fa-solid fa-phone-flip"></i>
+                <div><b>Fijo</b><br>(604) 839 0069 Ext. 101</div>
+            </div>
+            <div class="info-row">
+                <i class="fa-brands fa-facebook"></i>
+                <div><b>Facebook</b><br>AlexquinPublicidad</div>
+            </div>
+        </nav>
+
+        <footer class="footer">
+            TARJETA DIGITAL DESARROLLADA POR<br>
+            <b>VIBRAS POSITIVAS</b> © 2026<br>
+            DERECHOS DE AUTOR (311 770 0431)
+        </footer>
+    </div>
+</div>
+
+<script>
+    // CAMBIA LA FECHA PARA DESBLOQUEAR DESDE GITHUB (Año, Mes-1, Día)
+    const FECHA_VENCIMIENTO = new Date(2027, 0, 1); 
+
+    function verificarLicencia() {
+        const hoy = new Date();
+        const mainCard = document.getElementById('main-card');
+        if (hoy > FECHA_VENCIMIENTO) {
+            mainCard.classList.add('is-blocked');
+        }
+    }
+    verificarLicencia();
+</script>
+
+</body>
+</html>
