@@ -3,136 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta Digital - ALEXQUIN Publicidad</title>
+    <title>ALEXQUIN - Publicidad Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --alex-cyan: #00aeef;
             --alex-magenta: #ec008c;
             --alex-yellow: #fff200;
-            --card-bg: #ffffff;
-            --text-dark: #1f2937;
+            --bg-dark: #0a0a0c;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
-            /* FONDO DE PUBLICISTA: Degradado CMYK con malla de diseño */
-            background-color: #f0f2f5;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            /* FONDO PRO: Cuadrícula técnica con aura de neón */
             background-image: 
-                radial-gradient(circle at 20% 20%, rgba(0, 174, 239, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 80% 80%, rgba(236, 0, 140, 0.05) 0%, transparent 40%),
-                linear-gradient(#e5e7eb 1px, transparent 1px), 
-                linear-gradient(90deg, #e5e7eb 1px, transparent 1px);
+                radial-gradient(circle at 10% 10%, rgba(0, 174, 239, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 90% 90%, rgba(236, 0, 140, 0.15) 0%, transparent 50%),
+                linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
+            margin: 0; display: flex; justify-content: center; min-height: 100vh; color: white;
         }
 
         .card-container {
-            width: 100%;
-            max-width: 450px;
-            background: var(--card-bg);
-            display: flex;
-            flex-direction: column;
+            width: 100%; max-width: 450px;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(10px);
             position: relative;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-            /* Borde publicitario lateral */
-            border-top: 10px solid var(--alex-cyan);
-            overflow: hidden;
+            box-shadow: 0 0 100px rgba(0,0,0,1);
+            border-left: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+            display: flex; flex-direction: column;
         }
 
-        /* HEADER CREATIVO */
-        .header-canvas {
-            height: 240px;
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            padding: 20px;
-            border-bottom: 2px dashed #ddd;
+        /* HEADER PRO CON LOGO FLOTANTE */
+        .header-pro {
+            height: 280px;
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: visible;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
         }
 
         .profile-logo { 
-            width: 280px;
-            height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.1));
-            z-index: 2;
+            width: 80%; max-width: 300px;
+            filter: drop-shadow(0 0 30px rgba(0, 174, 239, 0.3));
+            animation: float 4s ease-in-out infinite;
         }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-        .business-info { text-align: center; padding: 25px 20px; }
+        .business-info { text-align: center; padding: 0 30px 30px; }
         .slogan { 
-            font-size: 16px; 
-            color: var(--alex-cyan); 
-            font-weight: 800; 
-            font-style: italic; 
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
+            font-size: 14px; color: var(--alex-cyan); font-weight: 600; 
+            letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px;
+            opacity: 0.9;
         }
+
+        /* TARJETA DE REPRESENTANTE GLASS */
+        .rep-card {
+            background: var(--glass);
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            padding: 25px; border-radius: 24px;
+            margin: 0 25px 30px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .rep-card::before {
+            content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            animation: shine 6s infinite;
+        }
+        @keyframes shine { 100% { left: 200%; } }
         
-        .rep-card { 
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 0 20px;
-            border-bottom: 4px solid var(--alex-magenta);
-        }
-        .rep-card h2 { font-size: 26px; color: #111; margin: 0; font-weight: 900; }
-        .rep-card span { font-size: 14px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+        .rep-card h2 { font-size: 24px; margin: 0; font-weight: 800; letter-spacing: -0.5px; }
+        .rep-card span { font-size: 12px; color: var(--alex-magenta); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; }
 
-        /* BOTÓN PORTAFOLIO PRO */
+        /* PORTAFOLIO PREMIUM */
         .portfolio-btn {
-            margin: 25px 20px;
-            padding: 18px;
-            background: linear-gradient(135deg, var(--alex-cyan), var(--alex-magenta));
-            border-radius: 12px;
-            text-decoration: none;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            font-weight: 900;
-            font-size: 15px;
-            text-transform: uppercase;
-            box-shadow: 0 10px 20px rgba(0,174,239,0.3);
-            transition: 0.3s;
+            margin: 0 25px 35px; padding: 18px;
+            background: white; color: black;
+            border-radius: 18px; text-decoration: none;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            font-weight: 900; font-size: 14px; text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+            transition: all 0.3s;
         }
+        .portfolio-btn:hover { transform: scale(1.02); box-shadow: 0 0 40px var(--alex-cyan); }
 
-        /* ACCIONES MÁS GRANDES */
-        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 0 20px 30px; }
-        .action-item { text-decoration: none; text-align: center; color: var(--text-dark); }
-        .icon-circle { 
-            width: 70px; height: 70px; border-radius: 50%; background: #ffffff; color: var(--alex-cyan);
-            display: flex; align-items: center; justify-content: center; margin: 0 auto 10px;
-            font-size: 28px; border: 2px solid #e2e8f0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        /* ICONOS DE ACCIÓN MINIMALISTAS */
+        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0 30px 40px; }
+        .action-item { text-decoration: none; text-align: center; color: white; transition: 0.3s; }
+        .icon-wrap {
+            width: 65px; height: 65px; border-radius: 22px;
+            background: var(--glass); border: 1px solid var(--glass-border);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px; font-size: 24px; transition: 0.3s;
         }
+        .action-item:hover .icon-wrap { background: white; color: black; border-color: white; }
 
-        /* INFO LIST */
-        .info-list { padding: 0 20px 30px; }
-        .info-box { 
-            display: flex; align-items: center; padding: 18px; background: #fff;
-            border-radius: 15px; margin-bottom: 12px; text-decoration: none; color: var(--text-dark);
-            font-size: 15px; border: 1px solid #f1f5f9;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        /* INFO LIST MODERN */
+        .info-list { padding: 0 30px 40px; }
+        .info-item {
+            display: flex; align-items: center; padding: 20px;
+            background: var(--glass); border-radius: 20px;
+            margin-bottom: 15px; border: 1px solid var(--glass-border);
+            font-size: 14px; transition: 0.3s;
         }
-        .info-box i { width: 40px; font-size: 22px; color: var(--alex-magenta); }
+        .info-item i { font-size: 20px; margin-right: 20px; width: 30px; text-align: center; color: var(--alex-cyan); }
+        .info-item b { display: block; font-size: 11px; text-transform: uppercase; opacity: 0.5; margin-bottom: 2px; }
 
         .footer { 
-            padding: 35px; text-align: center; background: #f8fafc; color: #94a3b8; font-size: 11px;
-            border-top: 1px solid #e2e8f0;
+            padding: 40px 20px; text-align: center; 
+            background: rgba(255,255,255,0.02); font-size: 10px;
+            color: rgba(255,255,255,0.3); border-top: 1px solid var(--glass-border);
         }
-        
-        /* BLOQUEO */
+        .footer strong { color: var(--alex-cyan); }
+
+        /* SISTEMA DE BLOQUEO */
         #lock-screen {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.98); z-index: 9999;
+            background: var(--bg-dark); z-index: 9999;
             flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; color: white; padding: 30px; box-sizing: border-box;
+            text-align: center; padding: 40px; box-sizing: border-box;
         }
         .is-blocked #lock-screen { display: flex; }
     </style>
@@ -142,17 +136,19 @@
 <div id="main-card" class="card-container">
     
     <div id="lock-screen">
-        <i class="fa-solid fa-wand-magic-sparkles" style="font-size: 55px; color: var(--alex-yellow); margin-bottom: 20px;"></i>
-        <h2>CREATIVIDAD EN PAUSA</h2>
-        <p>Tu tarjeta digital requiere activación.</p>
-        <a href="https://wa.me/573117700431?text=Hola%20Harold,%20reactiva%20mi%20tarjeta%20ALEXQUIN" 
-           style="background:var(--alex-cyan); color:white; padding:15px 30px; border-radius:30px; text-decoration:none; font-weight:900; margin-top:20px; display:inline-block;">
-           PAGAR PARA ACTIVAR
+        <div style="width: 80px; height: 80px; border: 2px solid var(--alex-magenta); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <i class="fa-solid fa-lock" style="font-size: 30px; color: var(--alex-magenta);"></i>
+        </div>
+        <h2 style="letter-spacing: 2px;">ACCESO RESTRINGIDO</h2>
+        <p style="opacity: 0.6; font-size: 14px;">La licencia de esta tarjeta digital ha expirado.</p>
+        <a href="https://wa.me/573117700431?text=Harold,%20necesito%20activar%20mi%20tarjeta%20premium" 
+           style="background: white; color: black; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 900; margin-top: 30px;">
+           RENOVAR AHORA
         </a>
     </div>
 
     <div class="content-to-hide">
-        <div class="header-canvas">
+        <div class="header-pro">
             <img src="alexquin.PNG" alt="ALEXQUIN" class="profile-logo">
         </div>
 
@@ -160,51 +156,59 @@
             <div class="slogan">"Le imprimimos pasión a tus ideas"</div>
             
             <div class="rep-card">
+                <span>Asesor Comercial Especializado</span>
                 <h2>Juvenal González</h2>
-                <span>Asesor Comercial</span>
             </div>
         </div>
 
         <a href="portafolio_alexquin.pdf" target="_blank" class="portfolio-btn">
-            <i class="fa-solid fa-palette"></i> Ver Portafolio Creativo
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Explorar Portafolio 2026
         </a>
 
         <div class="action-grid">
             <a href="tel:3045639630" class="action-item">
-                <div class="icon-circle"><i class="fa-solid fa-phone"></i></div>
-                <span style="font-size: 11px; font-weight: 800;">LLAMAR</span>
+                <div class="icon-wrap"><i class="fa-solid fa-phone-volume"></i></div>
+                <span style="font-size: 10px; font-weight: 700;">LLAMAR</span>
             </a>
             <a href="https://wa.me/573045639630" class="action-item">
-                <div class="icon-circle" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i></div>
-                <span style="font-size: 11px; font-weight: 800;">WHATSAPP</span>
+                <div class="icon-wrap"><i class="fa-brands fa-whatsapp"></i></div>
+                <span style="font-size: 10px; font-weight: 700;">WHATSAPP</span>
             </a>
             <a href="mailto:alexquinpublicidad@gmail.com" class="action-item">
-                <div class="icon-circle" style="color: var(--alex-magenta);"><i class="fa-solid fa-envelope"></i></div>
-                <span style="font-size: 11px; font-weight: 800;">CORREO</span>
+                <div class="icon-wrap"><i class="fa-solid fa-paper-plane"></i></div>
+                <span style="font-size: 10px; font-weight: 700;">EMAIL</span>
             </a>
         </div>
 
-        <nav class="info-list">
-            <div class="info-box">
-                <i class="fa-solid fa-location-dot"></i>
-                <div><b>Sede Caucasia</b><br>Calle 20 No. 8-49</div>
+        <div class="info-list">
+            <div class="info-item">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <div>
+                    <b>Centro de Producción</b>
+                    Calle 20 No. 8-49, Caucasia
+                </div>
             </div>
-            <div class="info-box">
-                <i class="fa-solid fa-print"></i>
-                <div><b>Producción</b><br>(604) 839 0069 Ext. 101</div>
+            <div class="info-item">
+                <i class="fa-solid fa-headset"></i>
+                <div>
+                    <b>Atención Corporativa</b>
+                    (604) 839 0069 Ext. 101
+                </div>
             </div>
-        </nav>
+        </div>
 
         <footer class="footer">
             ESTRATEGIA DIGITAL DESARROLLADA POR<br>
-            <b>VIBRAS POSITIVAS</b> © 2026<br>
-            DERECHOS DE AUTOR (311 770 0431)
+            <strong>VIBRAS POSITIVAS</strong> © 2026<br>
+            <span style="opacity: 0.5;">DERECHOS RESERVADOS (311 770 0431)</span>
         </footer>
     </div>
 </div>
 
 <script>
+    // CONTROL DE FECHA PARA HAROLD (Año, Mes-1, Día)
     const FECHA_VENCIMIENTO = new Date(2027, 0, 1); 
+
     function verificarLicencia() {
         const hoy = new Date();
         const mainCard = document.getElementById('main-card');
