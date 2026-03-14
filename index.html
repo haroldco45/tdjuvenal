@@ -9,15 +9,15 @@
         :root {
             --alex-cyan: #00aeef;
             --alex-magenta: #ec008c;
-            --alex-yellow: #fff200;
-            --primary-bg: #1a1a1a;
+            --primary-blue: #004a99;
             --card-bg: #ffffff;
-            --text-dark: #333333;
+            --bg-light: #f3f4f6;
+            --text-dark: #1f2937;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--primary-bg);
+            background: #111;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -31,65 +31,50 @@
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
 
         /* SISTEMA DE BLOQUEO */
         #lock-screen {
             display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 23, 42, 0.98); z-index: 9999;
+            background: rgba(31, 41, 55, 0.98); z-index: 9999;
             flex-direction: column; align-items: center; justify-content: center;
             text-align: center; color: white; padding: 30px; box-sizing: border-box;
         }
         .is-blocked #lock-screen { display: flex; }
-        .is-blocked .content-to-hide { filter: blur(15px); pointer-events: none; }
 
-        /* HEADER DISEÑO PROFESIONAL */
+        /* HEADER LIMPIO */
         .header-graphic {
             height: 200px;
-            background: #000;
-            position: relative;
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: visible;
-        }
-        
-        .header-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, #000 60%, var(--alex-magenta) 100%);
-            opacity: 0.9;
+            border-bottom: 1px solid #eee;
+            position: relative;
         }
 
         .profile-logo { 
-            width: 160px;
-            height: 160px;
-            background: white;
-            border-radius: 20px;
-            border: 4px solid var(--alex-cyan);
-            position: absolute;
-            bottom: -60px;
-            z-index: 2;
+            width: 220px;
+            height: auto;
             object-fit: contain;
-            padding: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 2;
         }
 
-        .business-info { text-align: center; padding: 80px 20px 20px; }
-        .business-info h1 { font-size: 28px; color: #000; margin: 0; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
-        .slogan { font-size: 14px; color: var(--alex-cyan); font-weight: 700; font-style: italic; margin-top: 5px; }
+        .business-info { text-align: center; padding: 25px 20px 20px; }
+        /* Título eliminado para evitar redundancia con el logo */
+        .slogan { font-size: 14px; color: var(--alex-cyan); font-weight: 700; font-style: italic; margin-bottom: 15px; }
         
-        .rep-info { margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px; }
-        .rep-info h2 { font-size: 20px; color: var(--primary-bg); margin: 0; }
-        .rep-info span { font-size: 12px; color: #666; font-weight: 800; text-transform: uppercase; }
+        .rep-info { border-top: 1px solid #eee; padding-top: 15px; }
+        .rep-info h2 { font-size: 22px; color: var(--text-dark); margin: 0; }
+        .rep-info span { font-size: 12px; color: #6b7280; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
 
         /* PORTAFOLIO */
         .portfolio-btn {
-            margin: 0 20px 20px;
-            padding: 15px;
+            margin: 10px 20px 25px;
+            padding: 16px;
             background: linear-gradient(45deg, var(--alex-cyan), var(--alex-magenta));
-            border-radius: 15px;
+            border-radius: 12px;
             text-decoration: none;
             color: white;
             display: flex;
@@ -98,32 +83,30 @@
             gap: 10px;
             font-weight: 800;
             font-size: 14px;
-            box-shadow: 0 5px 15px rgba(0,174,239,0.4);
+            box-shadow: 0 4px 12px rgba(0,174,239,0.3);
         }
 
         /* ACCIONES */
-        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 20px 25px; }
+        .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 0 20px 30px; }
         .action-item { text-decoration: none; text-align: center; color: var(--text-dark); }
         .icon-box { 
-            width: 55px; height: 55px; border-radius: 15px; background: var(--primary-bg); color: #fff;
+            width: 60px; height: 60px; border-radius: 50%; background: #ffffff; color: var(--primary-blue);
             display: flex; align-items: center; justify-content: center; margin: 0 auto 8px;
-            font-size: 20px;
+            font-size: 24px; border: 2px solid #eee;
         }
-        .action-item:nth-child(1) .icon-box { background: var(--alex-cyan); }
-        .action-item:nth-child(2) .icon-box { background: #25d366; }
-        .action-item:nth-child(3) .icon-box { background: var(--alex-magenta); }
 
-        .info-list { padding: 0 20px 25px; }
+        /* INFO LIST */
+        .info-list { padding: 0 20px 30px; }
         .info-row { 
-            display: flex; align-items: center; padding: 15px; background: #f8fafc;
-            border-radius: 12px; margin-bottom: 10px; text-decoration: none; color: var(--text-dark);
-            font-size: 14px; border: 1px solid #e2e8f0;
+            display: flex; align-items: center; padding: 16px; background: #f9fafb;
+            border-radius: 12px; margin-bottom: 12px; text-decoration: none; color: var(--text-dark);
+            font-size: 14px; border: 1px solid #f1f5f9;
         }
-        .info-row i { width: 30px; font-size: 18px; color: var(--alex-cyan); }
+        .info-row i { width: 35px; font-size: 20px; color: var(--alex-cyan); }
 
         .footer { 
-            padding: 25px; text-align: center; background: #000; color: #fff; font-size: 11px;
-            border-top: 5px solid var(--alex-yellow);
+            padding: 25px; text-align: center; background: #f9fafb; color: #6b7280; font-size: 11px;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
@@ -132,8 +115,8 @@
 <div id="main-card" class="card-container">
     
     <div id="lock-screen">
-        <i class="fa-solid fa-hourglass-end" style="font-size: 50px; color: var(--alex-yellow); margin-bottom: 20px;"></i>
-        <h2 style="color: var(--alex-yellow);">SERVICIO EN PAUSA</h2>
+        <i class="fa-solid fa-hourglass-half" style="font-size: 50px; color: var(--alex-yellow); margin-bottom: 20px;"></i>
+        <h2>SERVICIO EN PAUSA</h2>
         <p>Suscripción de prueba finalizada.</p>
         <a href="https://wa.me/573117700431?text=Hola%20Harold,%20reactiva%20mi%20tarjeta%20ALEXQUIN" 
            style="background:var(--alex-cyan); color:white; padding:12px 25px; border-radius:25px; text-decoration:none; font-weight:900; margin-top:15px; display:inline-block;">
@@ -143,12 +126,10 @@
 
     <div class="content-to-hide">
         <div class="header-graphic">
-            <div class="header-bg"></div>
             <img src="alexquin.PNG" alt="ALEXQUIN" class="profile-logo">
         </div>
 
         <div class="business-info">
-            <h1>ALEXQUIN</h1>
             <div class="slogan">"Le imprimimos pasión a tus ideas"</div>
             
             <div class="rep-info">
@@ -178,11 +159,11 @@
 
         <nav class="info-list">
             <div class="info-row">
-                <i class="fa-solid fa-location-dot"></i>
+                <i class="fa-solid fa-map-location-dot"></i>
                 <div><b>Caucasia, Antioquia</b><br>Calle 20 No. 8-49</div>
             </div>
             <div class="info-row">
-                <i class="fa-solid fa-tty"></i>
+                <i class="fa-solid fa-phone-volume"></i>
                 <div><b>Fijo Oficina</b><br>(604) 839 0069 Ext. 101</div>
             </div>
         </nav>
